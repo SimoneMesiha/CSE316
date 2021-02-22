@@ -1,0 +1,72 @@
+#grid-container {
+    position:absolute;
+    width:100%;
+    height:100%;
+    display: grid;
+    padding: 1px;
+    grid-template-rows: 5% 95%;
+    grid-template-columns: 12% 88%;
+}
+
+#navbar {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+}
+
+#left-sidebar {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+}
+
+#left-sidebar-header {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+#left-sidebar-header-text {
+    
+}
+
+#left-sidebar-controls {
+    text-align: right;
+}
+
+#workspace {
+    grid-column: 2 span 1;
+    grid-row: 2 span 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#todo-list-items-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item-card {
+    height: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.task-col {
+    width:25%;
+}
+
+.due-date-col {
+    width:25%;
+}
+
+.status-col {
+    width:25%
+}
+
+.list-controls-col {
+    width:25%;
+    display: flex;
+    flex-direction: row;
+}
+
+.list-item-control {
+    width: 20%;
+}

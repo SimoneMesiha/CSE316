@@ -1,0 +1,124 @@
+{
+    "lists": [
+        {
+            "name": "Not to do",
+            "items": [
+                {
+                    "description": "Give You Up",
+                    "due_date": "2019-09-30",
+                    "status": "complete"
+                },
+                {
+                    "description": "Say Goodbye",
+                    "due_date": "2019-10-15",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "Make You Cry",
+                    "due_date": "2019-12-30",
+                    "status": "incomplete"
+                }
+            ]
+        },
+        {
+            "name": "House Repairs",
+            "items": [
+                {
+                    "description": "Repair Leaky Kitchen Sink",
+                    "due_date": "2019-07-11",
+                    "status": "complete"
+                },
+                {
+                    "description": "Fix Leak in Roof",
+                    "due_date": "2019-10-15",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "Paint Interior",
+                    "due_date": "2019-11-11",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "Plant Flowers",
+                    "due_date": "2019-08-17",
+                    "status": "complete"
+                },
+                {
+                    "description": "Repair Front Door",
+                    "due_date": "2019-10-31",
+                    "status": "incomplete"
+                }
+            ]
+        },
+        {
+            "name": "Courses to Take",
+            "items": [
+                {
+                    "description": "CSE 114",
+                    "due_date": "2021-12-31",
+                    "status": "complete"
+                },
+                {
+                    "description": "CSE 215",
+                    "due_date": "2021-12-31",
+                    "status": "complete"
+                },
+                {
+                    "description": "AMS 301",
+                    "due_date": "2018-12-31",
+                    "status": "complete"
+                },
+                {
+                    "description": "CSE 214",
+                    "due_date": "2022-05-31",
+                    "status": "complete"
+                },
+                {
+                    "description": "AMS 310",
+                    "due_date": "2022-05-31",
+                    "status": "complete"
+                },
+                {
+                    "description": "CSE 216",
+                    "due_date": "2021-12-31",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "CSE 220",
+                    "due_date": "2019-12-31",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "CSE 316",
+                    "due_date": "2022-05-31",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "CSE 303",
+                    "due_date": "2022-05-31",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "CSE 380",
+                    "due_date": "2022-05-31",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "CSE 373",
+                    "due_date": "2022-12-31",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "CSE 381",
+                    "due_date": "2022-12-31",
+                    "status": "incomplete"
+                },
+                {
+                    "description": "CSE 416",
+                    "due_date": "2022-12-31",
+                    "status": "incomplete"
+                }
+            ]
+        }
+    ]
+}

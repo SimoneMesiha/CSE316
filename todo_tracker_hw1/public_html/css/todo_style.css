@@ -1,0 +1,71 @@
+:root {
+    /* 
+        FIRST WE'LL DEFINE OUR SWATCHES, i.e. THE COMPLEMENTARY
+        COLORS THAT WE'LL USE TOGETHER IN MULTIPLE PLACES THAT
+        TOGETHER WILL MAKE UP A GIVEN THEME
+    */
+    --swatch-foundation:    #d9d6cc; /* USED FOR BODY BACKGROUND */
+    --swatch-primary:       #40454e; /* DOMINANT COLOR, USED FOR MOST BACKGROUNDS */
+    --swatch-complement:    #353a44; /* USED IN CONTRAST BACKGROUND FOR TOOLBARS */
+    --swatch-contrast:      #111111; /* USED IN MOUSE-OVER SELECTION OF LARGE ELEMENTS */
+    --swatch-accent:        #ffc819; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */  
+
+    --swatch-text:          #e9edf0; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */ 
+    --swatch-text-accent:   #ffc819; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */  
+
+    --font-primary:         'Lexend Exa', sans-serif;
+}
+
+#grid-container {
+    background-color: var(--swatch-foundation);
+    font-family: var(--font-primary);
+}
+
+.grid-item {
+    background-color: var(--swatch-primary);
+}
+
+#navbar {
+    box-shadow: 2px 2px 2px var(--swatch-primary); 
+}
+
+#left-sidebar {
+    background-color: var(--swatch-complement);
+    color: rgb(233,237,240);
+}
+
+#workspace {
+    background-color: var(--swatch-primary);
+    color: rgb(233,237,240);
+}
+
+#title-div {
+    color: rgb(255,200,25);
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+#left-sidebar-header {
+    border-bottom: dotted;
+}
+
+#todo-list-table-header {
+    border-bottom: dotted;
+}
+
+.list-header-card {
+    border-bottom: dotted;
+}
+
+.list-item-card {
+    border-bottom: solid;
+}
+
+.todo_button {
+    cursor:pointer;
+    background-color: var(--swatch-complement);
+}
+
+.todo_button:hover {
+    background-color: var(--swatch-contrast);
+}
