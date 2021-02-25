@@ -51,9 +51,10 @@
 }
 
 .list-item-card {
-    height: 5%;
+    height: 54.36px;       /*changed this from a height percentage to a specific size*/
     display: flex;
     flex-direction: row;
+    
 }
 
 .task-col {
