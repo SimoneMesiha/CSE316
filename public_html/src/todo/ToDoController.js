@@ -24,6 +24,13 @@ export default class ToDoController {
             appModel.redo();
         }
         document.getElementById("delete-list-button").onmousedown = function() {
+            /* my stuff*/
+            let popUpTab = confirm("are you sure you want to delete?")
+            if(popUpTab === false){
+                return
+            }
+
+            
             appModel.removeCurrentList();
         }
         document.getElementById("add-item-button").onmousedown = function() {

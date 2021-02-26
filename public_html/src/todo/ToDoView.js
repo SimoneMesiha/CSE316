@@ -63,10 +63,10 @@ export default class ToDoView {
             let listItem = list.items[i];
             let listItemElement = "<div id='todo-list-item-" + listItem.id + "' class='list-item-card'>"
                                 + "<div class='task-col'>" + listItem.description + "</div>"
-                                + "<div class='due-date-col'>" + listItem.dueDate + "</div>"
+                                + "<input type ='date' class='due-date-col'>" + listItem.dueDate + "</div>"
                                 + "<div class='status-col'>" + listItem.status + "</div>"
                                 + "<div class='list-controls-col'>"
-                                + " <div class='list-item-control material-icons'>keyboard_arrow_up</div>"
+                                + " <button class='list-item-control material-icons'>keyboard_arrow_up</button>"
                                 + " <div class='list-item-control material-icons'>keyboard_arrow_down</div>"
                                 + " <div class='list-item-control material-icons'>close</div>"
                                 + " <div class='list-item-control'></div>"
@@ -74,7 +74,21 @@ export default class ToDoView {
                                 + "</div>";
             itemsListDiv.innerHTML += listItemElement;
         }
+        let c = this;
+        document.getElementById("todo-list-item-"+list.items[0]).children[4].addEventListener("click",()=>{let s = c.controller.model.currentList;
+        for (let i = 0; i< s.length;i++){
+            if(s.items[i].id == list.items[0].id){
+                let m = s.items[i-1];
+                s.items[i-1]= s.items[i];
+                s.items[1] = m;
+            }
+        }
+        c.viewList(s); /*rendering the new list so user can see effect */
+        })
+
     }
+
+    
 
     // THE VIEW NEEDS THE CONTROLLER TO PROVIDE PROPER RESPONSES
     setController(initController) {
