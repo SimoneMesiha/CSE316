@@ -70,7 +70,8 @@ export default class ToDoView {
 
                                 + " <button type='button' class='list-item-control material-icons' id ='arroUP"+listItem.id + "'> keyboard_arrow_up</button>"
                                 
-                                + " <button type='button' class='list-item-control material-icons'>keyboard_arrow_down</button>"
+                                +" <button type='button'class='list-item-control material-icons' id = 'arroDOWN" + listItem.id + "'> keyboard_arrow_down</button>"
+                                
                                 + " <div class='list-item-control material-icons'>close</div>"
                                 + " <div class='list-item-control'></div>"
                                 + " <div class='list-item-control'></div>"
@@ -82,6 +83,7 @@ export default class ToDoView {
         let c = this;
         let s = c.controller.model.currentList.items;
 
+        /**This things does arroUP */
         for(let i = 0; i<list.items.length;i++){
         let listItem = list.items[i];
         document.getElementById("arroUP"+listItem.id).
@@ -93,12 +95,37 @@ export default class ToDoView {
             list.items[i] = list.items[i-1];
             list.items[i-1] = temp;
             
-        }  
-                                        
+        }                    
         c.viewList(list); /*rendering the new list so user can see effect */
-         
         })
     }
+
+
+
+
+
+
+        
+
+        /**This things does arroUP */
+        for(let i = 0; i<list.items.length;i++){
+        let listItem = list.items[i];
+        document.getElementById("arroDOWN"+listItem.id).
+        addEventListener("click",()=>{
+        if(i==list.items.length-1){
+            return
+        }else{
+            let temp = list.items[i]; /* element on top*/
+            list.items[i] = list.items[i+1];
+            list.items[i+1] = temp;
+            
+        }                    
+        c.viewList(list); /*rendering the new list so user can see effect */
+        })
+    }
+        
+
+    
 
         
     }
