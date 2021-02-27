@@ -63,29 +63,44 @@ export default class ToDoView {
             let listItem = list.items[i];
             let listItemElement = "<div id='todo-list-item-" + listItem.id + "' class='list-item-card'>"
                                 + "<div class='task-col'>" + listItem.description + "</div>"
-                                + "<input type ='date' class='due-date-col'>" + listItem.dueDate + "</div>"
+                                + "<div class='due-date-col'>" + listItem.dueDate + "</div>"
                                 + "<div class='status-col'>" + listItem.status + "</div>"
+
                                 + "<div class='list-controls-col'>"
-                                + " <button class='list-item-control material-icons'>keyboard_arrow_up</button>"
-                                + " <div class='list-item-control material-icons'>keyboard_arrow_down</div>"
+
+                                + " <button type='button' class='list-item-control material-icons' id ='arroUP"+listItem.id + "'> keyboard_arrow_up</button>"
+                                
+                                + " <button type='button' class='list-item-control material-icons'>keyboard_arrow_down</button>"
                                 + " <div class='list-item-control material-icons'>close</div>"
                                 + " <div class='list-item-control'></div>"
                                 + " <div class='list-item-control'></div>"
+
                                 + "</div>";
+            
             itemsListDiv.innerHTML += listItemElement;
         }
         let c = this;
-        document.getElementById("todo-list-item-"+list.items[0]).children[4].addEventListener("click",()=>{let s = c.controller.model.currentList;
-        for (let i = 0; i< s.length;i++){
-            if(s.items[i].id == list.items[0].id){
-                let m = s.items[i-1];
-                s.items[i-1]= s.items[i];
-                s.items[1] = m;
-            }
-        }
-        c.viewList(s); /*rendering the new list so user can see effect */
-        })
+        let s = c.controller.model.currentList.items;
 
+        for(let i = 0; i<list.items.length;i++){
+        let listItem = list.items[i];
+        document.getElementById("arroUP"+listItem.id).
+        addEventListener("click",()=>{
+        if(i==0){
+            return
+        }else{
+            let temp = list.items[i]; /* element on top*/
+            list.items[i] = list.items[i-1];
+            list.items[i-1] = temp;
+            
+        }  
+                                        
+        c.viewList(list); /*rendering the new list so user can see effect */
+         
+        })
+    }
+
+        
     }
 
     
