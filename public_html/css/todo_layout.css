@@ -23,6 +23,7 @@
 #left-sidebar {
     grid-column: 1 / span 1;
     grid-row: 2 / span 1;
+    overflow: scroll;
 }
 
 #left-sidebar-header {
@@ -31,6 +32,7 @@
 }
 
 #left-sidebar-header-text {
+    
     
 }
 
@@ -54,7 +56,7 @@
 }
 
 .list-item-card {
-    height: 54.36px;       /*changed this from a height percentage to a specific size*/
+    height: 84px;       /*changed this from a height percentage to a specific size*/
     display: flex;
     flex-direction: row;
     
@@ -62,20 +64,26 @@
 }
 
 .task-col {
-    width:25%;
+    /*width:134.08px;*/
     font-family: "Consolas";
+    width: 234.69px;
+    height: 54.3px;
+    text-align: center;
 
 }
 
 .due-date-col {
-    width:25%;
+    width: 234.69px;
+    height: 54.3px;
     font-family: "Consolas";
+    text-align: center;
   
 
 }
 
 .status-col {
-    width:25%;
+     width: 234.69px;
+    height: 54.3px;  
     font-family: "Consolas";
     
 }
@@ -84,8 +92,11 @@
     width:25%;
     display: flex;
     flex-direction: row;
+    background-color: rgb(64, 69, 78);
 }
 
 .list-item-control {
     width: 20%;
+    
+    
 }

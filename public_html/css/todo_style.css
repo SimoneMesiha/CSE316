@@ -50,6 +50,7 @@
 
 #left-sidebar-header {
     border-bottom: dotted;
+    
 }
 
 #todo-list-table-header {
@@ -61,7 +62,7 @@
 }
 
 .list-item-card {
-    border-bottom: solid;
+    border-bottom: dotted;
 }
 
 .todo_button {
@@ -71,4 +72,50 @@
 
 .todo_button:hover {
     background-color: var(--swatch-contrast);
+}
+
+
+
+input[type="text"]
+{
+    background: transparent;
+    border: none;
+    font-family: "Consolas";
+    color: #e9edf0;
+    font-size: 16px;
+    width: 416.05px;
+    height: 54.3px;
+    text-align: center;
+}
+input[type="date"]
+{
+    background: transparent;
+    border: none;
+    font-family: "Consolas";
+    color: #e9edf0;
+    font-size: 16px;
+    width: 416.05px;
+    height: 54.3px;
+        text-align: center;
+
+
+}
+
+
+
+select {
+    /*border: 1px solid #fff;*/
+    background-color: transparent;
+    font-family: "Consolas";
+    color: #e9edf0;
+    font-size: 16px;
+}
+
+button{
+    background: transparent;
+    color: #e9edf0;
+    border-style: none;
+}
+input[type="button"]{
+   outline:none;
 }

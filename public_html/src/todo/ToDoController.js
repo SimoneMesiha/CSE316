@@ -42,5 +42,6 @@ export default class ToDoController {
     handleLoadList(listId) {
         // UNLOAD THE CURRENT LIST AND INSTEAD LOAD THE CURRENT LIST
         this.model.loadList(listId);
+        console.log(this.model.toDoList);
     }
 }
