@@ -115,7 +115,14 @@ button{
     background: transparent;
     color: #e9edf0;
     border-style: none;
+    cursor: pointer;
+    
 }
 input[type="button"]{
    outline:none;
+}
+
+button :hover{
+    color: palevioletred
+
 }

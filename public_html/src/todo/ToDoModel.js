@@ -4,6 +4,7 @@ import ToDoList from './ToDoList.js'
 import ToDoListItem from './ToDoListItem.js'
 import jsTPS from '../common/jsTPS.js'
 import AddNewItem_Transaction from './transactions/AddNewItem_Transaction.js'
+import RemoveNewItem_Transaction from './transactions/RemoveNewItem_Transaction.js'
 
 /**
  * ToDoModel
@@ -36,7 +37,8 @@ export default class ToDoModel {
      * @param {*} itemToAdd A instantiated item to add to the list.
      */
     addItemToCurrentList(itemToAdd) {
-        this.currentList.push(itemToAdd);
+        this.currentList.items.push(itemToAdd); //added items
+        this.view.viewList(this.currentList); //added 
     }
 
     /**
@@ -75,6 +77,13 @@ export default class ToDoModel {
         let transaction = new AddNewItem_Transaction(this);
         this.tps.addTransaction(transaction);
     }
+
+    //RemoveItemTransaction
+    RemoveNewItemTransaction(ListItem) {
+        let transaction = new RemoveNewItem_Transaction(this, ListItem); //we're passing the model and teh Item that will be removed
+        this.tps.addTransaction(transaction);
+    }
+
 
     /**
      * addNewList

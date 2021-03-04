@@ -100,3 +100,9 @@
     
     
 }
+
+.list-item-control:hover{
+    color: palevioletred;
+    background-color: pink;
+
+}

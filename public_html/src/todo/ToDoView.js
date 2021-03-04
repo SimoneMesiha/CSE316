@@ -25,7 +25,7 @@ export default class ToDoView {
         let thisController = this.controller;
         listElement.onmousedown = function() {
             
-            thisController.handleLoadList(newList.id);
+        thisController.handleLoadList(newList.id);
             
         }
     }
@@ -42,6 +42,8 @@ export default class ToDoView {
 
     // REFRESHES ALL THE LISTS IN THE LEFT SIDEBAR
     refreshLists(lists) {
+
+
         // GET THE UI CONTROL WE WILL APPEND IT TO
         let listsElement = document.getElementById("todo-lists-list");
         listsElement.innerHTML = "";
@@ -50,6 +52,8 @@ export default class ToDoView {
             let list = lists[i];
             this.appendNewListToView(list);
         }
+
+
     }
 
     // LOADS THE list ARGUMENT'S ITEMS INTO THE VIEW
@@ -82,9 +86,10 @@ export default class ToDoView {
                     everything.appendChild(text);
 
 
-                    document.getElementById("todo-list-item-"+ listItem.id).addEventListener("blur",
+                   text.addEventListener("blur",
                     ()=>{
-                    listItem.description = listItem.value;
+                    listItem.setDescription(text.value);
+                    //console.log(text);
                     this.viewList(list);
                     })
 
@@ -98,25 +103,45 @@ export default class ToDoView {
                     date.value=listItem.dueDate;
                     everything.appendChild(date);
 
+                    date.addEventListener("blur",
+                    ()=>{
+                    listItem.setDueDate(date.value);
+                    //console.log(date);
+                    this.viewList(list);
+                    })
+
+
+
                  let selection = document.createElement('select');
                     selection.className   = 'status-col' + listItem.status;
                     selection.id = 'complete';
                         let option1 = document.createElement('option');
                         option1.value =0;
                         option1.innerHTML = 'incomplete';
-                        option1.style.color='white'
+                        
 
                         let option2 = document.createElement('option');
                         option2.value =1;
                         option2.innerHTML = 'complete';
-                        option2.style.color = 'yellow';
+                        
                         
 
                     selection.appendChild(option1);
                     selection.appendChild(option2);
+                    selection.value = option2.value;
                     selection.id = 'complete';
 
                 everything.appendChild(selection);
+
+
+                    selection.addEventListener("blur",
+                        ()=>{
+                        listItem.setStatus(selection.value);
+                        console.log(selection.value)
+                        //console.log(date);
+                        this.viewList(list);
+                        })
+
 
                 let up = document.createElement('button');
                 up.innerHTML=('keyboard_arrow_up')
@@ -215,7 +240,9 @@ export default class ToDoView {
             //console.log(this.controller.model.toDoLists[i].id); //how to iterate through left sodebar
             let currSideBar = this.controller.model.toDoLists[i]
             document.getElementById("todo-list-"+currSideBar.id).addEventListener("click",()=>{
-                //this.controller.model.toDoLists[i].style.color = "red";
+                document.getElementById("todo-list-"+currSideBar.id).style.background = "green";
+                    //console.log(this.controller.model.toDoLists[i]);
+                //this.controller.model.toDoLists[i].style.background = "red";
                 this.refreshLists(this.controller.model.toDoLists); //refresh the lists
             })
         }
@@ -283,16 +310,17 @@ export default class ToDoView {
           */
         
 
-         /**This things does arroUP */
+         /**This things does delete */
          for(let i = 0; i<list.items.length;i++){          //needed to get index
          let listItem = list.items[i];
          document.getElementById("KLOSE"+listItem.id).
          addEventListener("click",()=>{
-        
-        
+          
+          let s = this.controller.model;
 
-         list.items = list.items.splice(i,1)
-               
+         //list.items.splice(i,1);
+         //list.removeItem(listItem);
+         s.RemoveNewItemTransaction(listItem);
          c.viewList(list); /*rendering the new list so user can see effect */
          })
          list.items.find
