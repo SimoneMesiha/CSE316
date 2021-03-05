@@ -7,6 +7,8 @@ import AddNewItem_Transaction from './transactions/AddNewItem_Transaction.js'
 import RemoveNewItem_Transaction from './transactions/RemoveNewItem_Transaction.js'
 import addNewDescription from './transactions/addNewDescription.js'
 import addNewDate from './transactions/addNewDate_transaction.js'
+import addnewSelection from './transactions/addNewSelection.js'
+
 
 
 /**
@@ -90,7 +92,7 @@ export default class ToDoModel {
 
 
 
-    //creating a new transaction
+    //creating a new transaction for text
     ChangeDescriptionTransaction(listItem, text){
                 let transaction = new addNewDescription(this, listItem, text); //we're passing the model and teh Item that will be removed
                 this.tps.addTransaction(transaction);
@@ -104,18 +106,30 @@ export default class ToDoModel {
         this.view.viewList(this.currentList);
     }
 
-      ChangeDateTransaction(listItem, text){
-                let transaction = new addNewDate(this, listItem, text); //we're passing the model and teh Item that will be removed
+    //creating new transaction for date
+      ChangeDateTransaction(listItem, date){
+                let transaction = new addNewDate(this, listItem, date); //we're passing the model and teh Item that will be removed
                 this.tps.addTransaction(transaction);
       }
 
-    ChangeDate(ListItem,date){
-        console.log(ListItem);
+    EditDate(ListItem,date){
+    
+        //console.log(ListItem);
         ListItem.setDueDate(date.value);
         this.view.viewList(this.currentList);
     }
 
+    ChangeSelectionTransaction(listItem, selection){
+                let transaction = new addNewSelection(this, listItem, selection); //we're passing the model and teh Item that will be removed
+                this.tps.addTransaction(transaction);
+      }
 
+    EditSelection(ListItem,selection){
+    
+        //console.log(ListItem);
+        ListItem.setStatus(selection.value);
+        this.view.viewList(this.currentList);
+    }
 
 
     /**

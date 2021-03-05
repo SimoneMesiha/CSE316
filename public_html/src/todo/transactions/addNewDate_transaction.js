@@ -7,23 +7,32 @@ import { jsTPS_Transaction } from "../../common/jsTPS.js"
 
 //we need the id of what we're trying to change
 export default class addNewDate extends jsTPS_Transaction {
-    constructor(initModel,Listitem, date) { // date
+    constructor(initModel,Listitem, dateElement) { // date
         super();
         this.model = initModel;
+        this.dateElement = dateElement;
         this.Listitem = Listitem;
-        this.date = date;
         this.oldDate = Listitem.getDueDate; // old text
+        this.newDate = null;
+
     }
 
     doTransaction() {
         // MAKE A NEW ITEM
-        this.model.EditTransaction(this.Listitem,this.date);
+        if(this.newDate==null){
+        this.model.EditDate(this.Listitem,this.date);
+        }else{
+            this.dateElement.value = this.newDate;
+            this.model.EditDate(this.Listitem,this.date);
+
+
+        }
     }
 
     undoTransaction() {
         this.date = this.oldText;
         console.log(this.oldText);
-        this.model.EditTransaction(this.Listitem,this.date);
+        this.model.EditDate(this.Listitem,this.date);
         console.log("hello world");
 
     }

@@ -108,7 +108,7 @@ export default class ToDoView {
                     date.addEventListener("blur",
                     ()=>{
                         let s = this.controller.model;
-                        s.ChangeDate(listItem, date);
+                        s.ChangeDateTransaction(listItem, date);
                     //listItem.setDueDate(date.value);
                     //console.log(date);
                     this.viewList(list);
@@ -140,7 +140,9 @@ export default class ToDoView {
 
                     selection.addEventListener("blur",
                         ()=>{
-                        listItem.setStatus(selection.value);
+                        //listItem.setStatus(selection.value);
+                        let s = this.controller.model;
+                        s.ChangeDateTransaction(listItem, selection);
                         console.log(selection.value)
                         //console.log(date);
                         this.viewList(list);
