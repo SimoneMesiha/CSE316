@@ -5,6 +5,9 @@ import ToDoListItem from './ToDoListItem.js'
 import jsTPS from '../common/jsTPS.js'
 import AddNewItem_Transaction from './transactions/AddNewItem_Transaction.js'
 import RemoveNewItem_Transaction from './transactions/RemoveNewItem_Transaction.js'
+import addNewDescription from './transactions/addNewDescription.js'
+import addNewDate from './transactions/addNewDate_transaction.js'
+
 
 /**
  * ToDoModel
@@ -83,6 +86,36 @@ export default class ToDoModel {
         let transaction = new RemoveNewItem_Transaction(this, ListItem); //we're passing the model and teh Item that will be removed
         this.tps.addTransaction(transaction);
     }
+
+
+
+
+    //creating a new transaction
+    ChangeDescriptionTransaction(listItem, text){
+                let transaction = new addNewDescription(this, listItem, text); //we're passing the model and teh Item that will be removed
+                this.tps.addTransaction(transaction);
+
+    }
+
+    //Methods for addTransacton
+    EditTransaction(ListItem,text){
+        console.log(ListItem);
+        ListItem.setDescription(text.value);
+        this.view.viewList(this.currentList);
+    }
+
+      ChangeDateTransaction(listItem, text){
+                let transaction = new addNewDate(this, listItem, text); //we're passing the model and teh Item that will be removed
+                this.tps.addTransaction(transaction);
+      }
+
+    ChangeDate(ListItem,date){
+        console.log(ListItem);
+        ListItem.setDueDate(date.value);
+        this.view.viewList(this.currentList);
+    }
+
+
 
 
     /**

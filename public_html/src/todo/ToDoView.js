@@ -85,11 +85,13 @@ export default class ToDoView {
                     text.description = listItem.description;
                     everything.appendChild(text);
 
-
+                    let s = this.controller.model.currentList.items;
                    text.addEventListener("blur",
                     ()=>{
-                    listItem.setDescription(text.value);
-                    //console.log(text);
+                        let s = this.controller.model;
+                
+                    //listItem.setDescription(text.value); //put it in control instead
+                    s.ChangeDescriptionTransaction(listItem, text);
                     this.viewList(list);
                     })
 
@@ -105,7 +107,9 @@ export default class ToDoView {
 
                     date.addEventListener("blur",
                     ()=>{
-                    listItem.setDueDate(date.value);
+                        let s = this.controller.model;
+                        s.ChangeDate(listItem, date);
+                    //listItem.setDueDate(date.value);
                     //console.log(date);
                     this.viewList(list);
                     })
