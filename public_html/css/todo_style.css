@@ -49,20 +49,20 @@
 }
 
 #left-sidebar-header {
-    border-bottom: dotted;
+    border-bottom: solid;
     
 }
 
 #todo-list-table-header {
-    border-bottom: dotted;
+    border-bottom: solid;
 }
 
 .list-header-card {
-    border-bottom: dotted;
+    border-bottom: solid;
 }
 
 .list-item-card {
-    border-bottom: dotted;
+    border-bottom: solid;
 }
 
 .todo_button {
@@ -109,13 +109,14 @@ select {
     font-family: "Consolas";
     color: #e9edf0;
     font-size: 16px;
+    text-align: center;
 }
 
 button{
     background: transparent;
     color: #e9edf0;
     border-style: none;
-    cursor: pointer;
+    cursor:pointer;
     
 }
 input[type="button"]{
@@ -123,6 +124,6 @@ input[type="button"]{
 }
 
 button :hover{
-    color: palevioletred
+    color: whitesmoke;
 
 }

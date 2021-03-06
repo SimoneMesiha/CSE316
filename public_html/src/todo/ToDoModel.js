@@ -7,7 +7,8 @@ import AddNewItem_Transaction from './transactions/AddNewItem_Transaction.js'
 import RemoveNewItem_Transaction from './transactions/RemoveNewItem_Transaction.js'
 import addNewDescription from './transactions/addNewDescription.js'
 import addNewDate from './transactions/addNewDate_transaction.js'
-import addnewSelection from './transactions/addNewSelection.js'
+import addNewSelection from './transactions/addNewSelection.js'
+import ArrowUpTrans from './transactions/ArrowUpTransaction.js'
 
 
 
@@ -112,10 +113,10 @@ export default class ToDoModel {
                 this.tps.addTransaction(transaction);
       }
 
-    EditDate(ListItem,date){
+    EditDate(ListItem,dateValue){
     
-        //console.log(ListItem);
-        ListItem.setDueDate(date.value);
+        //console.log(date);
+        ListItem.setDueDate(dateValue);
         this.view.viewList(this.currentList);
     }
 
@@ -127,10 +128,25 @@ export default class ToDoModel {
     EditSelection(ListItem,selection){
     
         //console.log(ListItem);
-        ListItem.setStatus(selection.value);
+        ListItem.setStatus(selection);
         this.view.viewList(this.currentList);
     }
 
+    ArrowUpTransaction(ListItem, Index){
+                let transaction = new ArrowUpTrans(this, ListItem, Index); //we're passing the model and teh Item that will be removed
+                this.tps.addTransaction(transaction);
+      }
+      ArrowUpTransactionDoer(ListItem, Index){
+          if(Index<=0){
+             return //empty 
+         }else{
+             let temp = ListItem.items[Index]; /* element on top*/
+             ListItem.items[Index] = ListItem.items[Index-1];
+             ListItem.items[Index-1] = temp;
+            
+         } 
+         this.view.viewList(this.currentList);                
+      }
 
     /**
      * addNewList

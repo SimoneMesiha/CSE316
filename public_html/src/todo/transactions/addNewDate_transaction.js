@@ -12,28 +12,29 @@ export default class addNewDate extends jsTPS_Transaction {
         this.model = initModel;
         this.dateElement = dateElement;
         this.Listitem = Listitem;
-        this.oldDate = Listitem.getDueDate; // old text
-        this.newDate = null;
+        this.oldDate = null; // old text
+        this.newDate = dateElement;
 
     }
 
     doTransaction() {
         // MAKE A NEW ITEM
-        if(this.newDate==null){
-        this.model.EditDate(this.Listitem,this.date);
+        if(this.oldDate==null){
+        this.oldDate = this.Listitem.getDueDate();    
+        this.model.EditDate(this.Listitem,this.newDate);
         }else{
-            this.dateElement.value = this.newDate;
-            this.model.EditDate(this.Listitem,this.date);
+            //this.dateElement.value = this.newDate;
+            this.model.EditDate(this.Listitem,this.newDate);
 
 
         }
     }
 
     undoTransaction() {
-        this.date = this.oldText;
-        console.log(this.oldText);
-        this.model.EditDate(this.Listitem,this.date);
-        console.log("hello world");
+        //this.date = this.oldDate;
+        //console.log(this.oldDate);
+        this.model.EditDate(this.Listitem,this.oldDate);
+        //console.log("hello world");
 
     }
 }

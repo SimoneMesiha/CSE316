@@ -24,8 +24,17 @@ export default class ToDoView {
         // SETUP THE HANDLER FOR WHEN SOMEONE MOUSE CLICKS ON OUR LIST
         let thisController = this.controller;
         listElement.onmousedown = function() {
-            
+        let temp = thisController.model.toDoLists.findIndex((ListItem)=>ListItem.id == newList.id); //index
+        let temp2  = thisController.model.toDoLists[0];
+        thisController.model.toDoLists[0] = thisController.model.toDoLists[temp];
+        thisController.model.toDoLists[temp] = temp2;
+        console.log(thisController.model.toDoLists);
+         
+        
+        
+
         thisController.handleLoadList(newList.id);
+
             
         }
     }
@@ -38,6 +47,7 @@ export default class ToDoView {
         while (parent.firstChild) {
             parent.removeChild(parent.firstChild);
         }
+
     }
 
     // REFRESHES ALL THE LISTS IN THE LEFT SIDEBAR
@@ -108,7 +118,8 @@ export default class ToDoView {
                     date.addEventListener("blur",
                     ()=>{
                         let s = this.controller.model;
-                        s.ChangeDateTransaction(listItem, date);
+                        console.log(date.value);
+                        s.ChangeDateTransaction(listItem, date.value);
                     //listItem.setDueDate(date.value);
                     //console.log(date);
                     this.viewList(list);
@@ -120,20 +131,27 @@ export default class ToDoView {
                     selection.className   = 'status-col' + listItem.status;
                     selection.id = 'complete';
                         let option1 = document.createElement('option');
-                        option1.value =0;
+                        option1.value ='incomplete';
                         option1.innerHTML = 'incomplete';
                         
 
                         let option2 = document.createElement('option');
-                        option2.value =1;
+                        option2.value ='complete';
                         option2.innerHTML = 'complete';
                         
                         
 
                     selection.appendChild(option1);
                     selection.appendChild(option2);
-                    selection.value = option2.value;
+                    selection.value = listItem.getStatus();
                     selection.id = 'complete';
+
+                    if(selection.value === option1.value){
+                       selection.style.color = '#F5BC75'
+                    }else{
+                        selection.style.color = '#8eD4F8';
+                    }
+
 
                 everything.appendChild(selection);
 
@@ -142,7 +160,7 @@ export default class ToDoView {
                         ()=>{
                         //listItem.setStatus(selection.value);
                         let s = this.controller.model;
-                        s.ChangeDateTransaction(listItem, selection);
+                        s.ChangeSelectionTransaction(listItem, selection.value);
                         console.log(selection.value)
                         //console.log(date);
                         this.viewList(list);
@@ -266,7 +284,13 @@ export default class ToDoView {
        
 
 
-
+       
+                //listSize = this.model.toDoLists.currentLists;
+                //console.log(listSize);
+                
+                //let lengthOFS = s.length;
+                //this.viewList(list);
+            
         let c = this;
         let s = c.controller.model.currentList.items;
 
@@ -275,14 +299,18 @@ export default class ToDoView {
          for(let i = 0; i<list.items.length;i++){
          let listItem = list.items[i];
          document.getElementById("arroUP"+listItem.id).addEventListener("click",()=>{
-         if(i==0){
-             return
-         }else{
-             let temp = list.items[i]; /* element on top*/
-             list.items[i] = list.items[i-1];
-             list.items[i-1] = temp;
+        
+            let s = this.controller.model;
+            console.log(listItem);
+            s.ArrowUpTransaction(list, i);
+        //  if(i==0){
+        //      return
+        //  }else{
+        //      let temp = list.items[i]; /* element on top*/
+        //      list.items[i] = list.items[i-1];
+        //      list.items[i-1] = temp;
             
-         }                    
+        //  }                    
          c.viewList(list); /*rendering the new list so user can see effect */
          })
      }
@@ -334,11 +362,38 @@ export default class ToDoView {
 
      
     
-
+     
         
     }
 
     
+    closeList(list){
+         document.getElementById("close-list-button").addEventListener("click",
+        ()=>{
+                //
+                this.clearItemsList();
+                                console.log("i wanna die");
+
+                this.viewList(list)
+                this.blackoutButtons();
+                console.log("i wanna die");
+
+
+
+        })
+     }
+
+     blackoutButtons(){
+        document.getElementById("close-list-button").style.color = 'black';
+        document.getElementById("close-list-button").style.pointerEvents = "none";
+        document.getElementById("add-item-button").style.color = 'black';
+        document.getElementById("add-item-button").style.pointerEvents = "none";
+        document.getElementById("delete-list-button").style.color = 'black';
+        document.getElementById("delete-list-button").style.pointerEvents = "none";
+         console.log("black");    
+     }
+
+
 
     // THE VIEW NEEDS THE CONTROLLER TO PROVIDE PROPER RESPONSES
     setController(initController) {
