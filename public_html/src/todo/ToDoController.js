@@ -41,22 +41,16 @@ export default class ToDoController {
             appModel.view.clearItemsList();
             appModel.view.blackoutButtons();
         }
-         document.getElementById("delete-list-button").onmousedown = function(){
-            appModel.view.clearItemsList();
-            appModel.view.blackoutButtons();
-        }
-        document.getElementById("add-item-button").onmousedown = function(){
-            appModel.view.clearItemsList();
-            appModel.view.blackoutButtons();
-        }
-        document.getElementById("delete-list-button").onmousedown = function(){
-            appModel.view.clearItemsList();
-            appModel.view.blackoutButtons();
-        }
-        document.getElementById("delete-list-button").onmousedown = function(){
-            appModel.view.clearItemsList();
-            appModel.view.blackoutButtons();
-        }
+        //  document.getElementById("delete-list-button").onmousedown = function(){
+        //     appModel.view.clearItemsList();
+        //     appModel.view.blackoutButtons();
+        // }
+        
+        // document.getElementById("delete-list-button").onmousedown = function(){
+        //     appModel.view.clearItemsList();
+        //     appModel.view.blackoutButtons();
+        // }
+       
          
         
         // document.getElementsByClassName("material-icons").onmousedown = function() {

@@ -29,7 +29,8 @@ export default class ToDoView {
         thisController.model.toDoLists[0] = thisController.model.toDoLists[temp];
         thisController.model.toDoLists[temp] = temp2;
         console.log(thisController.model.toDoLists);
-         
+        // this.ColorTop();
+        
         
         
 
@@ -68,12 +69,15 @@ export default class ToDoView {
 
     // LOADS THE list ARGUMENT'S ITEMS INTO THE VIEW
     viewList(list) {
+        
         // WE'LL BE ADDING THE LIST ITEMS TO OUR WORKSPACE
         let itemsListDiv = document.getElementById("todo-list-items-div");
         
 
         // GET RID OF ALL THE ITEMS
         this.clearItemsList();
+        // document.getElementById(list.items[0].id).style.color = 'black';
+        // document.getElementById(list.items[0].id).style.color = "none";
 
         for (let i = 0; i < list.items.length; i++) {
             // NOW BUILD ALL THE LIST ITEMS
@@ -266,7 +270,7 @@ export default class ToDoView {
             document.getElementById("todo-list-"+currSideBar.id).addEventListener("click",()=>{
                 document.getElementById("todo-list-"+currSideBar.id).style.background = "green";
                     //console.log(this.controller.model.toDoLists[i]);
-                //this.controller.model.toDoLists[i].style.background = "red";
+                //  this.controller.model.toDoLists[i].style.background = "red";
                 this.refreshLists(this.controller.model.toDoLists); //refresh the lists
             })
         }
@@ -303,6 +307,7 @@ export default class ToDoView {
             let s = this.controller.model;
             console.log(listItem);
             s.ArrowUpTransaction(list, i);
+            this.trial(this.controller.model.currentList);
         //  if(i==0){
         //      return
         //  }else{
@@ -317,7 +322,7 @@ export default class ToDoView {
 
 
 
-
+        
 
 
         
@@ -327,14 +332,18 @@ export default class ToDoView {
          let listItem = list.items[i];
          document.getElementById("arroDOWN"+listItem.id).
          addEventListener("click",()=>{
-        if(i==list.items.length-1){
-            return
-         }else{
-             let temp = list.items[i]; /* element on top*/
-            list.items[i] = list.items[i+1];
-             list.items[i+1] = temp;
+
+            let s = this.controller.model;
+            console.log(listItem);
+            s.ArrowDownTransaction(list, i);
+        // if(i==list.items.length-1){
+        //     return
+        //  }else{
+        //      let temp = list.items[i]; /* element on top*/
+        //     list.items[i] = list.items[i+1];
+        //      list.items[i+1] = temp;
             
-         }                    
+        //  }                    
          c.viewList(list); /*rendering the new list so user can see effect */
          })
      }
@@ -365,23 +374,25 @@ export default class ToDoView {
      
         
     }
-
+    openL
     
     closeList(list){
          document.getElementById("close-list-button").addEventListener("click",
         ()=>{
                 //
                 this.clearItemsList();
-                                console.log("i wanna die");
-
                 this.viewList(list)
                 this.blackoutButtons();
-                console.log("i wanna die");
-
 
 
         })
      }
+
+    //  blackArrowUp(){
+    //      document.getElementsById(list.items[0].id).style.color = 'black';
+    //     document.getElementsById(list.items[0].id).style.color = "none";
+
+    //  }
 
      blackoutButtons(){
         document.getElementById("close-list-button").style.color = 'black';
@@ -392,6 +403,33 @@ export default class ToDoView {
         document.getElementById("delete-list-button").style.pointerEvents = "none";
          console.log("black");    
      }
+
+        whiteout(){
+        document.getElementById("close-list-button").style.color = 'white';
+        document.getElementById("close-list-button").style.pointerEvents = "auto";
+        document.getElementById("add-item-button").style.color = 'white';
+        document.getElementById("add-item-button").style.pointerEvents = "auto";
+        document.getElementById("delete-list-button").style.color = 'white';
+        document.getElementById("delete-list-button").style.pointerEvents = "auto";
+         console.log("black");    
+     }
+
+
+     
+
+    trial(ListItem){
+        console.log("js1")
+            document.getElementById('arroUP'+ListItem.items[0].id).style.color = "black";    
+            //console.log("middle");
+            document.getElementById('arroUP'+ListItem.items[0].id).style.pointerEvents = "none";
+            //console.log("js sucks");
+            this.viewList(ListItem);
+
+        }
+
+        colorTop(list){
+            document.getElementById('todo-list-'+list.id).style.backgroundColor ="yellow";
+        }
 
 
 

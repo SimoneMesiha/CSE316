@@ -13,12 +13,13 @@
     --swatch-text:          #e9edf0; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */ 
     --swatch-text-accent:   #ffc819; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */  
 
-    --font-primary:         'Lexend Exa', sans-serif;
+    --font-primary:         'Consolas', sans-serif;
 }
 
 #grid-container {
     background-color: var(--swatch-foundation);
     font-family: var(--font-primary);
+    font-weight: 700;
 }
 
 .grid-item {

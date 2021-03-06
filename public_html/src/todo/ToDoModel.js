@@ -9,6 +9,7 @@ import addNewDescription from './transactions/addNewDescription.js'
 import addNewDate from './transactions/addNewDate_transaction.js'
 import addNewSelection from './transactions/addNewSelection.js'
 import ArrowUpTrans from './transactions/ArrowUpTransaction.js'
+import ArrowDownTrans from './transactions/ArrowDownTransaction.js'
 
 
 
@@ -138,15 +139,37 @@ export default class ToDoModel {
       }
       ArrowUpTransactionDoer(ListItem, Index){
           if(Index<=0){
+              
              return //empty 
          }else{
              let temp = ListItem.items[Index]; /* element on top*/
              ListItem.items[Index] = ListItem.items[Index-1];
              ListItem.items[Index-1] = temp;
-            
+             console.log(ListItem.items[0].id);
+            this.view.trial(ListItem);
+            console.log("Sono nawa Eren Yeager");
+
          } 
          this.view.viewList(this.currentList);                
       }
+
+    ArrowDownTransaction(ListItem, Index){
+                let transaction = new ArrowDownTrans(this, ListItem, Index); //we're passing the model and teh Item that will be removed
+                this.tps.addTransaction(transaction);
+      }
+      ArrowDownTransactionDoer(ListItem, Index){
+          if(Index==ListItem.items.length-1){
+            return
+         }else{
+             let temp = ListItem.items[Index]; /* element on top*/
+            ListItem.items[Index] = ListItem.items[Index+1];
+            ListItem.items[Index+1] = temp;
+            
+         }                    
+         this.view.viewList(this.currentList);                
+      }
+
+
 
     /**
      * addNewList
@@ -201,6 +224,12 @@ export default class ToDoModel {
             this.currentList = listToLoad;
             this.view.viewList(this.currentList);
         }
+        // console.log("gold");
+        // this.view.TopListGold();
+
+        this.view.whiteout();
+        
+        
     }
 
     /**
